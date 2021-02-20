@@ -1,0 +1,2 @@
+com/korochun/neutrino/test/Main.java
+ com.korochun.neutrino.test.Main
