@@ -1,11 +1,13 @@
 package com.korochun.neutrino;
 
+import org.joml.Vector2f;
+
 import java.util.Hashtable;
 
 class Sprite {
     private static final Hashtable<String, Sprite> sprites = new Hashtable<>();
     private boolean visible = false;
-    public Vector pos = new Vector();
+    public Vector2f pos = new Vector2f();
     private Image texture;
 
     public Sprite(String name, Image texture) {

@@ -17,15 +17,20 @@ public class Scene {
         return scenes.get(name);
     }
 
-    protected void render() {
+    protected void render(Neutrino neutrino) {
         glClearColor(backgroundRed, backgroundGreen, backgroundBlue, 0);
-        for (Layer layer : layers) layer.render();
+        for (Layer layer : layers) layer.render(neutrino);
     }
 
     public Scene setBackground(float red, float green, float blue) {
         this.backgroundRed = red;
         this.backgroundGreen = green;
         this.backgroundBlue = blue;
+        return this;
+    }
+
+    public Scene addLayer(Layer layer) {
+        layers.add(layer);
         return this;
     }
 }

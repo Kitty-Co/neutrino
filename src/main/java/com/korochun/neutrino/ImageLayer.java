@@ -1,7 +1,6 @@
 package com.korochun.neutrino;
 
-import static org.lwjgl.opengl.GL15.glDeleteBuffers;
-import static org.lwjgl.opengl.GL15.glGenBuffers;
+import static org.lwjgl.opengl.GL15.*;
 
 public class ImageLayer extends Layer {
     private final int buffer;
@@ -11,6 +10,9 @@ public class ImageLayer extends Layer {
         super(name);
         this.texture = texture;
         buffer = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        glBufferData(GL_ARRAY_BUFFER, new float[] {0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1}, GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
     public ImageLayer setTexture(Image texture) {
@@ -19,8 +21,8 @@ public class ImageLayer extends Layer {
     }
 
     @Override
-    protected void render() {
-        // TODO
+    protected void render(Neutrino neutrino) {
+        neutrino.draw(transform, texture, buffer, 6);
     }
 
     @Override

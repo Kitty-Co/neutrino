@@ -9,6 +9,9 @@ group 'com.korochun.neutrino'
 version '1.0.0'
 mainClassName = 'com.korochun.neutrino.test.NeutrinoTest'
 
+project.ext.lwjglVersion = "3.2.3"
+project.ext.jomlVersion = "1.10.0"
+
 switch (OperatingSystem.current()) {
     case OperatingSystem.LINUX:
         project.ext.lwjglNatives = "natives-linux"
@@ -27,15 +30,16 @@ repositories {
 }
 
 dependencies {
-    implementation platform("org.lwjgl:lwjgl-bom:3.2.3")
+    implementation 'org.jetbrains:annotations:19.0.0'
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-glfw"
     implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-stb"
-    implementation 'org.jetbrains:annotations:19.0.0'
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    compile "org.joml:joml:$jomlVersion"
 }

@@ -10,7 +10,7 @@ public class SpriteLayer extends Layer {
     }
 
     @Override
-    protected void render() {
+    protected void render(Neutrino neutrino) {
         // TODO
     }
 

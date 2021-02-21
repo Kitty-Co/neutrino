@@ -9,7 +9,7 @@ class TileMap extends Layer {
     }
 
     @Override
-    protected void render() {
+    protected void render(Neutrino neutrino) {
         // TODO
     }
 
